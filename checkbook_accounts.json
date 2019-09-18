@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "user_id": "1",
+      "first_name": "Testy",
+      "last_name": "McTestcase",
+      "blah": "blah, blah",
+      "user_since": "2019-01-01"
+    }
+  ],
+  "accounts": [
+    {
+      "account_id": "1",
+      "account_type": "Testing",
+      "account_ref_name": "Test",
+      "user_id": "000"
+    }
+  ],
+  "entries": [
+    {
+      "trans_id": "1568729124.8222458",
+      "user_id": "1",
+      "account_id": "1",
+      "date_recorded": "2019-09-01",
+      "amount": "0",
+      "description": "Open Account",
+      "amount_available": "0",
+      "amount_reserved": "0",
+      "date_posted": "2019-09-01",
+      "offset_acct_id": ""
+    }
+  ]
+}

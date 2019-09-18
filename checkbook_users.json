@@ -1,0 +1,86 @@
+[
+    {
+        "users": [
+            {
+                "user_id": "000",
+                "first_name": "Testy",
+                "last_name": "McTestcase",
+                "blah": "blah, blah",
+                "user_since": "2019-01-01"
+            },
+            {
+                "user_id": "001",
+                "first_name": "Owen",
+                "last_name": "Lotts",
+                "blah": "blah, blah",
+                "user_file_name": "checkbook_user_001.json"
+            },
+            {
+                "user_id": "002",
+                "first_name": "Bob",
+                "last_name": "Pabaloobop",
+                "blah": "blah, blah",
+                "user_file_name": "checkbook_user_002.json"
+            }
+        ],
+        "accounts": [
+            {
+                "acct_id": "0",
+                "acct_type": "Testing",
+                "acct_ref_name": "Test",
+                "user_id": "000"
+            },
+            {
+                "acct_id": "1000151001725",
+                "acct_type": "Checking",
+                "acct_ref_name": "Main",
+                "user_id": "001"
+            },
+            {
+                "acct_id": "2000151001834",
+                "acct_type": "Savings",
+                "acct_ref_name": "Rainy Day",
+                "user_id": "001"
+            },
+            {
+                "acct_id": "1000151001572",
+                "acct_type": "Checking",
+                "acct_ref_name": "Bills",
+                "user_id": "001"
+            },
+            {
+                "acct_id": "9000151001001",
+                "acct_type": "Embezzling",
+                "acct_ref_name": "Hustle",
+                "user_id": "001"
+            },
+            {
+                "acct_id": "1000151002725",
+                "acct_type": "Checking",
+                "acct_ref_name": "Primary",
+                "user_id": "002"
+            },
+            {
+                "acct_id": "2000151002521",
+                "acct_type": "Savings",
+                "acct_ref_name": "Rainy Day",
+                "user_id": "002"
+            },
+            {
+                "acct_id": "2000151002309",
+                "acct_type": "Savings",
+                "acct_ref_name": "Rainier Day",
+                "user_id": "002"
+            },
+            {
+                "acct_id": "8000151002774",
+                "acct_type": "Laundering",
+                "acct_ref_name": "Hustle",
+                "user_id": "002"
+            }
+        ],
+        "transactions": [
+            ...
+        ]
+    }
+    ]

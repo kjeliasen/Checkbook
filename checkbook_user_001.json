@@ -1,0 +1,26 @@
+[
+    {
+        "acct_id": "1000151001725",
+        "acct_type": "Checkings",
+        "acct_ref_name": "Main",
+        "user_id": "001"
+    },
+    {
+        "acct_id": "2000151001834",
+        "acct_type": "Savings",
+        "acct_ref_name": "Rainy Day",
+        "user_id": "001"
+    },
+    {
+        "acct_id": "1000151001572",
+        "acct_type": "Checkings",
+        "acct_ref_name": "Bills",
+        "user_id": "001"
+    },
+    {
+        "acct_id": "9000151001001",
+        "acct_type": "Embezzlings",
+        "acct_ref_name": "Hustle",
+        "user_id": "001"
+    }
+]
