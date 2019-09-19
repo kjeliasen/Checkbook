@@ -144,7 +144,7 @@ def cl_record_debit(context, entries, users, accounts, **kwargs):
     bug_note(verb='ending', func=func)
     
 
-def cl_record_credit(context, entries,  **kwargs):
+def cl_record_credit(context, entries, users, accounts,  **kwargs):
     func = 'cl_record_credit'    
     bug_note(verb='starting', func=func)
     # do some of the things
@@ -290,7 +290,7 @@ def input_entry(context, entries, dci, **kwargs):
             print('\n\n')
         if pick == '0':
             user_amount = input(f'Enter the {entry_type} amount: $')
-            new_entry['amount'] = user_amount * entry_sign
+            new_entry['amount'] = float(user_amount) * entry_sign
             pick = False
         elif pick == '1':
             user_description = input('Enter the {entry_type} description: ')
@@ -305,6 +305,7 @@ def input_entry(context, entries, dci, **kwargs):
                 new_entry[item[0]] = str(item[1])
             entries.append(new_entry)
             save(kwargs['users'], kwargs['accounts'], entries)
+            get_cur_account_entries(context, entries)
             edit = False
 
         elif pick.lower() == 'x':

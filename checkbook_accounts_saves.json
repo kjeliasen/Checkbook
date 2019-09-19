@@ -30,11 +30,23 @@
       "offset_acct_id": ""
     },
     {
-      "trans_id": "1568854920.304915",
+      "trans_id": "1568860270.376856",
       "user_id": "1",
       "account_id": "1",
       "date_recorded": "2019-09-18",
-      "amount": "0",
+      "amount": "150",
+      "description": "Test Deposit",
+      "amount_available": "0",
+      "amount_reserved": "0",
+      "date_posted": "2019-09-18",
+      "offset_acct_id": ""
+    },
+    {
+      "trans_id": "1568861207.450552",
+      "user_id": "1",
+      "account_id": "1",
+      "date_recorded": "2019-09-18",
+      "amount": "-100.0",
       "description": "",
       "amount_available": "0",
       "amount_reserved": "0",
