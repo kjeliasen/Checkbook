@@ -135,12 +135,12 @@ def cl_view_balance(context, entries, **kwargs):
     bug_note(verb='ending', func=func)
     
 
-def cl_record_debit(context, entries, **kwargs):
+def cl_record_debit(context, entries, users, accounts, **kwargs):
     func = 'cl_record_debit'    
     bug_note(verb='starting', func=func)
     # do some of the things
     print((' ' * 10) + 'Recording Debit')
-    input_entry(context=context, entries=entries, dci='d')
+    input_entry(context=context, dci='d', entries=entries, users=users, accounts=accounts)
     bug_note(verb='ending', func=func)
     
 
@@ -149,6 +149,7 @@ def cl_record_credit(context, entries,  **kwargs):
     bug_note(verb='starting', func=func)
     # do some of the things
     print((' ' * 10) + 'Recording Credit')
+    input_entry(context=context, dci='c', entries=entries, users=users, accounts=accounts)
     bug_note(verb='ending', func=func)
     
 
@@ -248,32 +249,72 @@ def update_user_variables(user_id):
 
 def input_entry(context, entries, dci, **kwargs):
     edit = True
+    txt=''
     entry_sign = -1 if dci=='c' else 1
     entry_type = 'withdrawal' if dci=='c' else 'deposit'
     date_def = dt.date.today()
-    def_entry = {
-    "trans_id": t.time(),
-    "user_id": context['current_user_id'],
-    "account_id": context['current_account_id'],
-    "date_recorded": date_def,
-    "amount": 0,
-    "description": '',
-    "amount_available": 0,
-    "amount_reserved": 0,
-    "date_posted": date_def,
-    "offset_acct_id": ""
+    new_entry = {
+        "trans_id": t.time(),
+        "user_id": context['current_user_id'],
+        "account_id": context['current_account_id'],
+        "date_recorded": date_def,
+        "amount": 0,
+        "description": '',
+        "amount_available": 0,
+        "amount_reserved": 0,
+        "date_posted": date_def,
+        "offset_acct_id": ""
     }
     editable_fields = [
         'amount', 'description', 'date_posted'
     ]
-    print(date_def)
-    print(def_entry)
+#    print(date_def)
+#    print(new_entry)
+    pick = False
     while edit:
-        
-        user_amount = input(f'Enter the {entry_type} amount: $')
-        user_description = input('Enter the {entry_type} description: ')
-        target_amount = ''.join([char for char in user_amount if char in '0123456789.'])
-        num_decimals = sum([1 for char in target_amount if char == '.'])
+        edit_items = [item for item in new_entry.items() if item[0] in editable_fields]
+        print('DEBUG Check pick', pick)
+        if not pick:
+            star_line()
+            print('\n\n')
+            for item in new_entry.items():
+                print(f'{txt:>20s}  {item[0]} = {item[1]}')
+            print('\n')
+            for index, item in enumerate(edit_items):
+                print(f'{index:>20d}) {item[0]} = {item[1]}')
+            for index, item in [['c','Complete'], ['x', 'eXcape']]:
+                print(f'{index:>20s}) {item}')
+            print('\n')
+            star_line()
+            pick = input('Pick an item to update: ')
+            print('\n\n')
+        if pick == '0':
+            user_amount = input(f'Enter the {entry_type} amount: $')
+            new_entry['amount'] = user_amount * entry_sign
+            pick = False
+        elif pick == '1':
+            user_description = input('Enter the {entry_type} description: ')
+            new_entry['description'] = user_description
+            pick = False
+        elif pick == '2':
+            user_date = input('Enter the date in format YYYY-MM-YY: ')
+            new_entry['date_posted'] = user_date
+            pick = False
+        elif pick.lower() == 'c':
+            for item in new_entry.items():
+                new_entry[item[0]] = str(item[1])
+            entries.append(new_entry)
+            save(kwargs['users'], kwargs['accounts'], entries)
+            edit = False
+
+        elif pick.lower() == 'x':
+            edit = False
+        else:
+            print('DEBUG else')
+            pick = False
+
+        #target_amount = ''.join([char for char in user_amount if char in '0123456789.'])
+        #num_decimals = sum([1 for char in target_amount if char == '.'])
 
 
 
